@@ -1,0 +1,15 @@
+{
+  "name": "hexlet/code",
+  "description": "Mind games",
+  "authors": [
+    {
+      "name": "Vsevolod Loboda",
+      "email": "vsevolodloboda@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bin": [
+    "bin/brain-games"
+  ],
+  "require": {}
+}
