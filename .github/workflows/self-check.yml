@@ -4,6 +4,7 @@ jobs:
   code-quality:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2
       - name: lint
         run: |
           ls ${{ github.workspace }}
