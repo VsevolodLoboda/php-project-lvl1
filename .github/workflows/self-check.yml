@@ -1,0 +1,8 @@
+name: self-check
+on: push
+jobs:
+  code-quality:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: lint
+        run: make lint
