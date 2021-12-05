@@ -5,9 +5,7 @@ namespace Brain\Games\Prime;
 use function Brain\Games\Helpers\isPrime;
 use function Brain\Games\Helpers\boolToHumanAnswer;
 use function Brain\Games\Engine\runBrainGame;
-
-use const Brain\Games\Cli\FALSE_ANSWER;
-use const Brain\Games\Cli\TRUE_ANSWER;
+use function Brain\Games\Helpers\replaceAnswersPlaceholder;
 
 const GAME_DESCRIPTION = 'Answer "%s" if given number is prime. Otherwise answer "%s".';
 
@@ -21,17 +19,14 @@ function run(): void
 {
     $questionGenerator = function () {
         $randomValue = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
-
         return [
             $randomValue,
             boolToHumanAnswer(isPrime($randomValue))
         ];
     };
 
-    $gameDescription = vsprintf(GAME_DESCRIPTION, [
-        TRUE_ANSWER,
-        FALSE_ANSWER
-    ]);
-
-    runBrainGame($gameDescription, $questionGenerator);
+    runBrainGame(
+        replaceAnswersPlaceholder(GAME_DESCRIPTION),
+        $questionGenerator
+    );
 }

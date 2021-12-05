@@ -90,6 +90,20 @@ function boolToHumanAnswer(bool $answer): string
 }
 
 /**
+ * Replace placeholder in text with TRUE_ANSWER and FALSE_ANSWER constant
+ *
+ * @param string $text Test with placeholders
+ * @return string
+ */
+function replaceAnswersPlaceholder(string $text): string
+{
+    return vsprintf($text, [
+        TRUE_ANSWER,
+        FALSE_ANSWER
+    ]);
+}
+
+/**
  * Stops the program and displays an error
  *
  * @param string $message Error message
