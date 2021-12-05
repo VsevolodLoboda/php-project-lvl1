@@ -15,7 +15,7 @@ function run(): void
             list($value1, $operation, $value2, $result) = generateMathExpression(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
             return [
                 "$value1 $operation $value2",
-                (string)$result
+                $result
             ];
         }
     );

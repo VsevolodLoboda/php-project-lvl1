@@ -34,8 +34,8 @@ function runGame(callable $questionGenerator): bool
         printQuestion($question);
         $userAnswer = askUserAnswer();
 
-        if ($userAnswer !== $answer) {
-            printLine("'$answer' is wrong answer ;(. Correct answer was '$answer'.");
+        if ($userAnswer !== (string)$answer) {
+            printLine("'$userAnswer' is wrong answer ;(. Correct answer was '$answer'.");
             $numberOfMistakes += 1;
             continue;
         }
