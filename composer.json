@@ -18,7 +18,10 @@
     },
     "files": [
       "src/Cli.php",
-      "src/games/EvenGame.php"
+      "src/Helpers.php",
+      "src/games/EvenGame.php",
+      "src/games/CalcGame.php",
+      "src/games/Engine.php"
     ]
   },
   "require": {
