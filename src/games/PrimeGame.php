@@ -2,26 +2,36 @@
 
 namespace Brain\Games\Prime;
 
-use function Brain\Games\Engine\game;
+use function Brain\Games\Helpers\boolToHumanAnswer;
+use function Brain\Games\Engine\runBrainGame;
 use function Brain\Games\Helpers\isPrime;
+
+use const Brain\Games\Cli\FALSE_ANSWER;
+use const Brain\Games\Cli\TRUE_ANSWER;
+
+const GAME_DESCRIPTION = 'Answer "%s" if given number is prime. Otherwise answer "%s".';
 
 const MIN_RANDOM_VALUE = 1;
 const MAX_RANDOM_VALUE = 200;
 
-const TRUE_ANSWER = 'yes';
-const FALSE_ANSWER = 'no';
-
-function run()
+/**
+ * Run the game
+ */
+function run(): void
 {
-    game(
-        'Answer "yes" if given number is prime. Otherwise answer "no".',
-        function () {
-            $randomValue = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+    $questionGenerator = function () {
+        $randomValue = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
 
-            return [
-                (string)$randomValue,
-                (isPrime($randomValue) ? TRUE_ANSWER : FALSE_ANSWER)
-            ];
-        }
-    );
+        return [
+            $randomValue,
+            boolToHumanAnswer(isPrime($randomValue))
+        ];
+    };
+
+    $gameDescription = vsprintf(GAME_DESCRIPTION, [
+        TRUE_ANSWER,
+        FALSE_ANSWER
+    ]);
+
+    runBrainGame($gameDescription, $questionGenerator);
 }

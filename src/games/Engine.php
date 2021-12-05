@@ -2,28 +2,47 @@
 
 namespace Brain\Games\Engine;
 
+use function Brain\Games\Cli\askUserAnswer;
 use function Brain\Games\Cli\printLine;
-use function Brain\Games\Cli\promt;
-use function Brain\Games\Cli\runGreetings;
+use function Brain\Games\Cli\printQuestion;
+use function Brain\Games\Cli\startGreetingsDialog;
 
-const ALLOW_MISTAKES_NUMBER = 0;
-const WIN_CONDITION_NUMBER = 3;
+const ALLOW_MISTAKES_NUMBER = 0; // The number of mistakes a user can make in the game
+const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
 
-function game(string $gameDescription, callable $questionAnswerGenerator): void
+/**
+ * Launches the game with a given configuration
+ *
+ * @param string $gameDescription A string defining what needs to be done in the game
+ * @param callable $questionAnswerGenerator Question and answer generator {@see demoQuestionGenerator()}
+ */
+function runBrainGame(string $gameDescription, callable $questionAnswerGenerator): void
 {
-    $userName = runGameGreetings($gameDescription);
-    $isGameWon = runGame($questionAnswerGenerator);
-    runGameEnd($userName, $isGameWon);
+    $userName = startGreetings($gameDescription);
+    $isGameWon = startGameLogic($questionAnswerGenerator);
+    startGameEnd($userName, $isGameWon);
 }
 
-function runGameGreetings(string $gameDescription): string
+/**
+ * Launches the greeting dialog
+ *
+ * @param string $gameDescription A string defining what needs to be done in the game
+ * @return string User name
+ */
+function startGreetings(string $gameDescription): string
 {
-    $userName = runGreetings();
+    $userName = startGreetingsDialog();
     printLine($gameDescription);
     return $userName;
 }
 
-function runGame(callable $questionGenerator): bool
+/**
+ * Running the basic game logic
+ *
+ * @param callable $questionGenerator Question and answer generator {@see demoQuestionGenerator()}
+ * @return bool Game result (win/loss)
+ */
+function startGameLogic(callable $questionGenerator): bool
 {
     $numberOfCorrectAnswers = 0;
     $numberOfMistakes = 0;
@@ -47,21 +66,31 @@ function runGame(callable $questionGenerator): bool
     return $numberOfCorrectAnswers >= WIN_CONDITION_NUMBER && $numberOfMistakes <= ALLOW_MISTAKES_NUMBER;
 }
 
-function runGameEnd(string $userName, bool $isGameWon): void
+/**
+ * End of game
+ *
+ * @param string $userName
+ * @param bool $isGameWon
+ */
+function startGameEnd(string $userName, bool $isGameWon): void
 {
-    if ($isGameWon) {
-        printLine("Congratulations, $userName!");
-    } else {
-        printLine("Let's try again, $userName!");
+    $endGameMessage = "Congratulations, $userName!";
+    if (!$isGameWon) {
+        $endGameMessage = "Let's try again, $userName!";
     }
+
+    printLine($endGameMessage);
 }
 
-function printQuestion(string $question): void
+/**
+ * Generates a question and provides an answer
+ *
+ * @return string[] [0] - Question text, [1] - Answer text
+ */
+function demoQuestionGenerator(): array
 {
-    printLine("Question: $question");
-}
-
-function askUserAnswer(): string
-{
-    return trim(promt('Your answer'));
+    return [
+        'question',
+        'answer'
+    ];
 }
