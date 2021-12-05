@@ -2,9 +2,9 @@
 
 namespace Brain\Games\Prime;
 
+use function Brain\Games\Helpers\isPrime;
 use function Brain\Games\Helpers\boolToHumanAnswer;
 use function Brain\Games\Engine\runBrainGame;
-use function Brain\Games\Helpers\isPrime;
 
 use const Brain\Games\Cli\FALSE_ANSWER;
 use const Brain\Games\Cli\TRUE_ANSWER;
