@@ -21,7 +21,7 @@ function run(): void
         $result = calcGcd($random1, $random2);
 
         return [
-            "$random1, $random2",
+            "$random1 $random2",
             $result
         ];
     };
