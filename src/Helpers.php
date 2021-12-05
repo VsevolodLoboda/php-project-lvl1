@@ -60,13 +60,13 @@ function calcGcd(int $val1, int $val2): int
  */
 function genAProgression(int $lowRange = 1, int $topRange = 1000, int $length = 10): array
 {
-    $step = mt_rand($lowRange, round($topRange / $length));
+    $step = mt_rand($lowRange, (int)round($topRange / $length));
     if ($step < $lowRange) {
         $step = $lowRange;
     }
 
     $range = range($lowRange, $topRange, $step);
-    if (!$range) {
+    if (is_bool($range)) {
         criticalError(
             'Incorrect parameters for progression generation: ' .
             "low=$lowRange;top=$topRange;length=$length"
