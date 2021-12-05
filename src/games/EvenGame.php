@@ -42,7 +42,7 @@ function runGame(): bool
         $rightAnswer = determineRightAnswer($generatedNumber);
 
         if (strtolower($answer) !== strtolower($rightAnswer)) {
-            printLine("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
+            printLine("'$answer' is wrong answer ;(. Correct answer was '$rightAnswer'.");
             $numberOfMistakes += 1;
             continue;
         }
@@ -57,9 +57,9 @@ function runGame(): bool
 function runGameEnd(string $userName, bool $isGameWon): void
 {
     if ($isGameWon) {
-        printLine("Congratulations, ${userName}!");
+        printLine("Congratulations, $userName!");
     } else {
-        printLine("Let's try again, {$userName}!");
+        printLine("Let's try again, $userName!");
     }
 }
 
@@ -71,7 +71,7 @@ function determineRightAnswer(int $number): string
 
 function printQuestion(string $question): void
 {
-    printLine("Question: ${question}");
+    printLine("Question: $question");
 }
 
 function askUserAnswer(): string
