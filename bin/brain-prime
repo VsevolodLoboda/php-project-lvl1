@@ -2,6 +2,6 @@
 
 <?php
 
-require __DIR__ . 'autoload';
+require 'autoload';
 
 Brain\Games\Prime\run();
