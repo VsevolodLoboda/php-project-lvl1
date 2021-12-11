@@ -2,7 +2,6 @@
 
 namespace Brain\Games\Prime;
 
-use function Brain\Games\Helpers\isPrime;
 use function Brain\Games\Helpers\boolToHumanAnswer;
 use function Brain\Games\Engine\runBrainGame;
 use function Brain\Games\Helpers\replaceAnswersPlaceholder;
@@ -29,4 +28,20 @@ function run(): void
         replaceAnswersPlaceholder(GAME_DESCRIPTION),
         $questionGenerator
     );
+}
+
+/**
+ * Determines if the number is prime
+ *
+ * @param int $number Verifiable number
+ * @return bool
+ */
+function isPrime(int $number): bool
+{
+    for ($x = 2; $x < $number; $x += 1) {
+        if ($number % $x == 0) {
+            return false;
+        }
+    }
+    return true;
 }

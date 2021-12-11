@@ -23,23 +23,14 @@ function startGreetingsDialog(): string
 }
 
 /**
- * Print question for user
- *
- * @param string $question Question content
- */
-function printQuestion(string $question): void
-{
-    line("Question: $question");
-}
-
-/**
  * Request to enter an answer to a question
  *
+ * @param string $introductoryText entry prompt text
  * @return string Text entered by the user
  */
-function askUserAnswer(): string
+function readInput(string $introductoryText): string
 {
-    return trim(prompt('Your answer'));
+    return trim(prompt($introductoryText));
 }
 
 /**

@@ -2,7 +2,6 @@
 
 namespace Brain\Games\Even;
 
-use function Brain\Games\Helpers\isEven;
 use function Brain\Games\Engine\runBrainGame;
 use function Brain\Games\Helpers\boolToHumanAnswer;
 use function Brain\Games\Helpers\replaceAnswersPlaceholder;
@@ -29,4 +28,15 @@ function run(): void
         replaceAnswersPlaceholder(GAME_DESCRIPTION),
         $questionGenerator
     );
+}
+
+/**
+ * Determines if the number is even
+ *
+ * @param int $number Verifiable number
+ * @return bool
+ */
+function isEven(int $number): bool
+{
+    return $number % 2 === 0;
 }

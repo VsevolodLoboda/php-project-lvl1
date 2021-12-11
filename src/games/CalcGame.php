@@ -41,7 +41,7 @@ function generateMathExpression(int $minValue, int $maxValue): array
     $generatedNumber2 = mt_rand($minValue, $maxValue);
     $operation = MATH_OPERATIONS[array_rand(MATH_OPERATIONS)];
 
-    $result = calcMathExpression($generatedNumber1, $operation, $generatedNumber2);
+    $result = calcMathExpression($operation, $generatedNumber1, $generatedNumber2);
 
     return [
         $generatedNumber1,
@@ -59,7 +59,7 @@ function generateMathExpression(int $minValue, int $maxValue): array
  * @param int $v2 Second operand
  * @return int Result of math expression
  */
-function calcMathExpression(int $v1, string $operator, int $v2): int
+function calcMathExpression(string $operator, int $v1, int $v2): int
 {
     $result = null;
 
