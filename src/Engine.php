@@ -4,10 +4,8 @@ namespace Brain\Games\Engine;
 
 use function Brain\Games\Cli\readInput;
 use function Brain\Games\Cli\printLine;
-use function Brain\Games\Cli\startGreetingsDialog;
 use function Brain\Games\Helpers\criticalError;
 
-const ALLOW_MISTAKES_NUMBER = 0; // The number of mistakes a user can make in the game
 const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
 
 /**
@@ -18,14 +16,13 @@ const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
  */
 function runBrainGame(string $gameDescription, callable $generateQuestionAnswer): void
 {
-    printLine('Welcome to the Brain Game!');
+    printLine('Welcome to the Brain Games!');
     $userName = readInput('Your answer');
     printLine($gameDescription);
 
-    $numberOfCorrectAnswers = 0;
-    $numberOfMistakes = 0;
+    $score = 0;
 
-    while ($numberOfCorrectAnswers < WIN_CONDITION_NUMBER && $numberOfMistakes <= ALLOW_MISTAKES_NUMBER) {
+    while ($score < WIN_CONDITION_NUMBER) {
         list($question, $answer) = $generateQuestionAnswer();
 
         if (gettype($question) !== 'string') {
@@ -41,22 +38,15 @@ function runBrainGame(string $gameDescription, callable $generateQuestionAnswer)
 
         if ($userAnswer !== $answer) {
             printLine("'$userAnswer' is wrong answer ;(. Correct answer was '$answer'.");
-            $numberOfMistakes += 1;
-            continue;
+            printLine("Let's try again, $userName!");
+            return;
         }
 
         printLine('Correct!');
-        $numberOfCorrectAnswers += 1;
+        $score += 1;
     }
 
-    $isGameWon = $numberOfCorrectAnswers >= WIN_CONDITION_NUMBER && $numberOfMistakes <= ALLOW_MISTAKES_NUMBER;
-
-    $endGameMessage = "Congratulations, $userName!";
-    if (!$isGameWon) {
-        $endGameMessage = "Let's try again, $userName!";
-    }
-
-    printLine($endGameMessage);
+    printLine("Congratulations, $userName!");
 }
 
 /**

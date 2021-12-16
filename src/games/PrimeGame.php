@@ -40,8 +40,12 @@ function run(): void
  */
 function isPrime(int $number): bool
 {
+    if (in_array($number, [0, 1])) {
+        return false;
+    }
+
     for ($x = 2; $x < $number; $x += 1) {
-        if ($number % $x == 0) {
+        if ($number % $x === 0) {
             return false;
         }
     }

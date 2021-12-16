@@ -9,17 +9,13 @@ const TRUE_ANSWER = 'yes'; // Positive response to closed questions
 const FALSE_ANSWER = 'no'; // Negative response to closed questions
 
 /**
- * Show greetings, in command line, returns name of user
- *
- * @return string User name
+ * Show greetings in command line
  */
-function startGreetingsDialog(): string
+function startGreetingsDialog(): void
 {
     line('Welcome to the Brain Game!');
     $name = trim(prompt('May I have your name?'));
     line("Hello, %s!", $name);
-
-    return $name;
 }
 
 /**
@@ -30,7 +26,7 @@ function startGreetingsDialog(): string
  */
 function readInput(string $introductoryText): string
 {
-    return trim(prompt($introductoryText));
+    return prompt($introductoryText);
 }
 
 /**
