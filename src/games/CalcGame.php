@@ -18,37 +18,18 @@ const MATH_OPERATIONS = ['+', '-', '*'];
 function run(): void
 {
     $questionGenerator = function () {
-        list($value1, $operation, $value2, $result) = generateMathExpression(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        $generatedNumber1 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        $generatedNumber2 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        $operation = MATH_OPERATIONS[array_rand(MATH_OPERATIONS)];
+
+        $result = calcMathExpression($generatedNumber1, $operation, $generatedNumber2);
         return [
-            "$value1 $operation $value2",
+            "$generatedNumber1 $operation $generatedNumber2",
             $result
         ];
     };
 
     runBrainGame(GAME_DESCRIPTION, $questionGenerator);
-}
-
-/**
- * Generates a mathematical expression with the answer
- *
- * @param int $minValue Minimum value of the generated number
- * @param int $maxValue Maximum value of the generated number
- * @return array [0] - value #1, [1] - math operator, [2] - value #2, [3] - calculated result
- */
-function generateMathExpression(int $minValue, int $maxValue): array
-{
-    $generatedNumber1 = mt_rand($minValue, $maxValue);
-    $generatedNumber2 = mt_rand($minValue, $maxValue);
-    $operation = MATH_OPERATIONS[array_rand(MATH_OPERATIONS)];
-
-    $result = calcMathExpression($generatedNumber1, $operation, $generatedNumber2);
-
-    return [
-        $generatedNumber1,
-        $operation,
-        $generatedNumber2,
-        $result
-    ];
 }
 
 /**
