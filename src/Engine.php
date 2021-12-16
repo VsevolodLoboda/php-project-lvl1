@@ -14,9 +14,9 @@ const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
  * Launches the game with a given configuration
  *
  * @param string $gameDescription A string defining what needs to be done in the game
- * @param callable $questionAnswerGenerator Question and answer generator {@see demoQuestionGenerator()}
+ * @param callable $generateQuestionAnswer Question and answer generator {@see generateQuestionAnswerDemo()}
  */
-function runBrainGame(string $gameDescription, callable $questionAnswerGenerator): void
+function runBrainGame(string $gameDescription, callable $generateQuestionAnswer): void
 {
     printLine('Welcome to the Brain Game!');
     $userName = readInput('Your answer');
@@ -26,7 +26,7 @@ function runBrainGame(string $gameDescription, callable $questionAnswerGenerator
     $numberOfMistakes = 0;
 
     while ($numberOfCorrectAnswers < WIN_CONDITION_NUMBER && $numberOfMistakes <= ALLOW_MISTAKES_NUMBER) {
-        list($question, $answer) = $questionAnswerGenerator();
+        list($question, $answer) = $generateQuestionAnswer();
 
         if (gettype($question) !== 'string') {
             criticalError('Question generator error: question must be a string');
@@ -64,7 +64,7 @@ function runBrainGame(string $gameDescription, callable $questionAnswerGenerator
  *
  * @return string[] [0] - Question text, [1] - Answer text
  */
-function demoQuestionGenerator(): array
+function generateQuestionAnswerDemo(): array
 {
     return [
         'question',
