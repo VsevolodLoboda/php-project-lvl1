@@ -13,7 +13,7 @@ const FALSE_ANSWER = 'no'; // Negative response to closed questions
  */
 function startGreetingsDialog(): void
 {
-    line('Welcome to the Brain Game!');
+    line('Welcome to the Brain Games!');
     $name = trim(prompt('May I have your name?'));
     line("Hello, %s!", $name);
 }
