@@ -2,7 +2,6 @@
 
 namespace Brain\Games\Even;
 
-use function Brain\Games\Helpers\isEven;
 use function Brain\Games\Engine\runBrainGame;
 use function Brain\Games\Helpers\boolToHumanAnswer;
 use function Brain\Games\Helpers\replaceAnswersPlaceholder;
@@ -18,10 +17,12 @@ const MAX_RANDOM_VALUE = 100;
 function run(): void
 {
     $questionGenerator = function () {
-        $randomValue = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        $question = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        $answer = boolToHumanAnswer(isEven($question));
+
         return [
-            $randomValue,
-            boolToHumanAnswer(isEven($randomValue))
+            $question,
+            $answer
         ];
     };
 
@@ -29,4 +30,15 @@ function run(): void
         replaceAnswersPlaceholder(GAME_DESCRIPTION),
         $questionGenerator
     );
+}
+
+/**
+ * Determines if the number is even
+ *
+ * @param int $number Verifiable number
+ * @return bool
+ */
+function isEven(int $number): bool
+{
+    return $number % 2 === 0;
 }

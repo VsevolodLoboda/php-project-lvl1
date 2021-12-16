@@ -18,14 +18,18 @@ const MATH_OPERATIONS = ['+', '-', '*'];
 function run(): void
 {
     $questionGenerator = function () {
+        list($value1, $operation, $value2, $result) = generateMathExpression(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+
         $generatedNumber1 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $generatedNumber2 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $operation = MATH_OPERATIONS[array_rand(MATH_OPERATIONS)];
 
-        $result = calcMathExpression($generatedNumber1, $operation, $generatedNumber2);
+        $question = "$value1 $operation $value2";
+        $answer = calcMathExpression($operation, $generatedNumber1, $generatedNumber2);
+
         return [
-            "$generatedNumber1 $operation $generatedNumber2",
-            $result
+            $question,
+            $answer
         ];
     };
 
@@ -40,7 +44,7 @@ function run(): void
  * @param int $v2 Second operand
  * @return int Result of math expression
  */
-function calcMathExpression(int $v1, string $operator, int $v2): int
+function calcMathExpression(string $operator, int $v1, int $v2): int
 {
     $result = null;
 
