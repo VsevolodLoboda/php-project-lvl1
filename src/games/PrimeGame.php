@@ -17,11 +17,11 @@ const MAX_RANDOM_VALUE = 200;
 function run(): void
 {
     $questionGenerator = function () {
-        $question = (string)mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        $question = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $answer = boolToHumanAnswer(isPrime($question));
 
         return [
-            $question,
+            (string)$question,
             $answer
         ];
     };
