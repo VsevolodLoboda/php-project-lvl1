@@ -5,6 +5,7 @@ namespace Brain\Games\Engine;
 use function Brain\Games\Cli\readInput;
 use function Brain\Games\Cli\printLine;
 use function Brain\Games\Cli\startGreetingsDialog;
+use function Brain\Games\Helpers\criticalError;
 
 const ALLOW_MISTAKES_NUMBER = 0; // The number of mistakes a user can make in the game
 const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
@@ -17,7 +18,8 @@ const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
  */
 function runBrainGame(string $gameDescription, callable $questionAnswerGenerator): void
 {
-    $userName = startGreetingsDialog();
+    printLine('Welcome to the Brain Game!');
+    $userName = readInput('Your answer');
     printLine($gameDescription);
 
     $numberOfCorrectAnswers = 0;
@@ -26,10 +28,18 @@ function runBrainGame(string $gameDescription, callable $questionAnswerGenerator
     while ($numberOfCorrectAnswers < WIN_CONDITION_NUMBER && $numberOfMistakes <= ALLOW_MISTAKES_NUMBER) {
         list($question, $answer) = $questionAnswerGenerator();
 
+        if (gettype($question) !== 'string') {
+            criticalError('Question generator error: question must be a string');
+        }
+
+        if (gettype($answer) !== 'string') {
+            criticalError('Question generator error: answer must be a string');
+        }
+
         printLine("Question: $question");
         $userAnswer = readInput('Your answer');
 
-        if ($userAnswer !== (string)$answer) {
+        if ($userAnswer !== $answer) {
             printLine("'$userAnswer' is wrong answer ;(. Correct answer was '$answer'.");
             $numberOfMistakes += 1;
             continue;

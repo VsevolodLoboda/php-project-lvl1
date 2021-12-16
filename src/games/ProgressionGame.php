@@ -27,10 +27,10 @@ function run(): void
         );
         $replaceIndex = array_rand($progression);
 
-        $progression[$replaceIndex] = PROGRESSION_PLACEHOLDER;
+        $answer = (string)$progression[$replaceIndex];
 
+        $progression[$replaceIndex] = PROGRESSION_PLACEHOLDER;
         $question = implode(PROGRESSION_DELIMITER, $progression);
-        $answer = $progression[$replaceIndex];
 
         return [
             $question,

@@ -25,7 +25,7 @@ function run(): void
         $operation = MATH_OPERATIONS[array_rand(MATH_OPERATIONS)];
 
         $question = "$value1 $operation $value2";
-        $answer = calcMathExpression($operation, $generatedNumber1, $generatedNumber2);
+        $answer = (string)calcMathExpression($operation, $generatedNumber1, $generatedNumber2);
 
         return [
             $question,

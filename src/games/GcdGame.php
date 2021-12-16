@@ -19,7 +19,7 @@ function run(): void
         $random2 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
 
         $question = "$random1 $random2";
-        $answer = calcGcd($random1, $random2);
+        $answer = (string)calcGcd($random1, $random2);
 
         return [
             $question,
