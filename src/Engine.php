@@ -12,7 +12,7 @@ const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
  * Launches the game with a given configuration
  *
  * @param string $gameDescription A string defining what needs to be done in the game
- * @param callable $generateQuestionAnswer Question and answer generator {@see generateQuestionAnswerDemo()}
+ * @param callable $generateQuestionAnswer Question and answer generator
  */
 function runBrainGame(string $gameDescription, callable $generateQuestionAnswer): void
 {
@@ -47,17 +47,4 @@ function runBrainGame(string $gameDescription, callable $generateQuestionAnswer)
     }
 
     printLine("Congratulations, $userName!");
-}
-
-/**
- * Generates a question and provides an answer
- *
- * @return string[] [0] - Question text, [1] - Answer text
- */
-function generateQuestionAnswerDemo(): array
-{
-    return [
-        'question',
-        'answer'
-    ];
 }
