@@ -5,9 +5,6 @@ namespace Brain\Games\Cli;
 use function cli\line;
 use function cli\prompt;
 
-const TRUE_ANSWER = 'yes'; // Positive response to closed questions
-const FALSE_ANSWER = 'no'; // Negative response to closed questions
-
 /**
  * Show greetings in command line
  */

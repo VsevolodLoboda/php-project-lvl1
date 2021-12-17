@@ -8,6 +8,9 @@ use function Brain\Games\Helpers\criticalError;
 
 const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
 
+const TRUE_ANSWER = 'yes'; // Positive response to closed questions
+const FALSE_ANSWER = 'no'; // Negative response to closed questions
+
 /**
  * Launches the game with a given configuration
  *
@@ -47,4 +50,29 @@ function runBrainGame(string $gameDescription, callable $generateQuestionAnswer)
     }
 
     printLine("Congratulations, $userName!");
+}
+
+/**
+ * Converts the boolean representation of the answer to a string
+ *
+ * @param bool $answer Answer in boolean representation
+ * @return string Human representation
+ */
+function boolToHumanAnswer(bool $answer): string
+{
+    return $answer ? TRUE_ANSWER : FALSE_ANSWER;
+}
+
+/**
+ * Replace placeholder in text with TRUE_ANSWER and FALSE_ANSWER constant
+ *
+ * @param string $text Test with placeholders
+ * @return string
+ */
+function replaceAnswersPlaceholder(string $text): string
+{
+    return vsprintf($text, [
+        TRUE_ANSWER,
+        FALSE_ANSWER
+    ]);
 }

@@ -2,9 +2,9 @@
 
 namespace Brain\Games\Prime;
 
-use function Brain\Games\Helpers\boolToHumanAnswer;
+use function Brain\Games\Engine\boolToHumanAnswer;
 use function Brain\Games\Engine\runBrainGame;
-use function Brain\Games\Helpers\replaceAnswersPlaceholder;
+use function Brain\Games\Engine\replaceAnswersPlaceholder;
 
 const GAME_DESCRIPTION = 'Answer "%s" if given number is prime. Otherwise answer "%s".';
 

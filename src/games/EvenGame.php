@@ -3,8 +3,8 @@
 namespace Brain\Games\Even;
 
 use function Brain\Games\Engine\runBrainGame;
-use function Brain\Games\Helpers\boolToHumanAnswer;
-use function Brain\Games\Helpers\replaceAnswersPlaceholder;
+use function Brain\Games\Engine\boolToHumanAnswer;
+use function Brain\Games\Engine\replaceAnswersPlaceholder;
 
 const GAME_DESCRIPTION = 'Answer "%s" if the number is even, otherwise answer "%s".';
 

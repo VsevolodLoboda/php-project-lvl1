@@ -3,7 +3,6 @@
 namespace Brain\Games\Progression;
 
 use function Brain\Games\Engine\runBrainGame;
-use function Brain\Games\Helpers\criticalError;
 
 const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
