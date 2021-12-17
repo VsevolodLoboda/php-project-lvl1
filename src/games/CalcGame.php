@@ -17,7 +17,7 @@ const MATH_OPERATIONS = ['+', '-', '*'];
  */
 function run(): void
 {
-    $questionGenerator = function () {
+    $generateQuestionAnswer = function () {
         $generatedNumber1 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $generatedNumber2 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $operation = MATH_OPERATIONS[array_rand(MATH_OPERATIONS)];
@@ -31,7 +31,7 @@ function run(): void
         ];
     };
 
-    runBrainGame(GAME_DESCRIPTION, $questionGenerator);
+    runBrainGame(GAME_DESCRIPTION, $generateQuestionAnswer);
 }
 
 /**

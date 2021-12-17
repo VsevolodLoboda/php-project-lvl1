@@ -14,7 +14,7 @@ const MAX_RANDOM_VALUE = 100;
  */
 function run(): void
 {
-    $questionGenerator = function () {
+    $generateQuestionAnswer = function () {
         $random1 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $random2 = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
 
@@ -27,7 +27,7 @@ function run(): void
         ];
     };
 
-    runBrainGame(GAME_DESCRIPTION, $questionGenerator);
+    runBrainGame(GAME_DESCRIPTION, $generateQuestionAnswer);
 }
 
 /**

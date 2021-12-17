@@ -16,7 +16,7 @@ const MAX_RANDOM_VALUE = 200;
  */
 function run(): void
 {
-    $questionGenerator = function () {
+    $generateQuestionAnswer = function () {
         $question = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $answer = boolToHumanAnswer(isPrime($question));
 
@@ -28,7 +28,7 @@ function run(): void
 
     runBrainGame(
         replaceAnswersPlaceholder(GAME_DESCRIPTION),
-        $questionGenerator
+        $generateQuestionAnswer
     );
 }
 
@@ -45,6 +45,7 @@ function isPrime(int $number): bool
     }
 
     for ($x = 2; $x < $number; $x += 1) {
+        // TODO: I'm not sure I've got how we can simplify this check to "$number / 2". Could you give complete example?
         if ($number % $x === 0) {
             return false;
         }

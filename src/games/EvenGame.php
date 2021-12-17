@@ -16,7 +16,7 @@ const MAX_RANDOM_VALUE = 100;
  */
 function run(): void
 {
-    $questionGenerator = function () {
+    $generateQuestionAnswer = function () {
         $question = mt_rand(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         $answer = boolToHumanAnswer(isEven($question));
 
@@ -28,7 +28,7 @@ function run(): void
 
     runBrainGame(
         replaceAnswersPlaceholder(GAME_DESCRIPTION),
-        $questionGenerator
+        $generateQuestionAnswer
     );
 }
 

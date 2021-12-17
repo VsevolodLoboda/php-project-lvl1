@@ -23,7 +23,7 @@ const PROGRESSION_PLACEHOLDER = '..';
  */
 function run(): void
 {
-    $questionGenerator = function () {
+    $generateQuestionAnswer = function () {
         $progression = genAProgression(
             mt_rand(MIN_PROGRESSION_START_VALUE, MAX_PROGRESSION_START_VALUE),
             mt_rand(MIN_STEP, MAX_STEP),
@@ -42,7 +42,7 @@ function run(): void
         ];
     };
 
-    runBrainGame(GAME_DESCRIPTION, $questionGenerator);
+    runBrainGame(GAME_DESCRIPTION, $generateQuestionAnswer);
 }
 
 /**
