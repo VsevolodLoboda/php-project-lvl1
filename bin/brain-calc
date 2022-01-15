@@ -4,4 +4,4 @@
 
 require 'autoload';
 
-Brain\Games\Calc\run();
+BrainGames\Calc\run();

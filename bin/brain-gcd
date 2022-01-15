@@ -4,4 +4,4 @@
 
 require 'autoload';
 
-Brain\Games\Gcd\run();
+BrainGames\Gcd\run();

@@ -4,4 +4,4 @@
 
 require 'autoload';
 
-Brain\Games\Cli\startGreetingsDialog();
+BrainGames\Cli\startGreetingsDialog();

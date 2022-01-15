@@ -1,10 +1,10 @@
 <?php
 
-namespace Brain\Games\Engine;
+namespace BrainGames\Engine;
 
-use function Brain\Games\Cli\readInput;
-use function Brain\Games\Cli\printLine;
-use function Brain\Games\Helpers\criticalError;
+use function BrainGames\Cli\readInput;
+use function BrainGames\Cli\printLine;
+use function BrainGames\Helpers\criticalError;
 
 const WIN_CONDITION_NUMBER = 3; // Number of correct answers needed to win
 

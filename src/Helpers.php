@@ -1,8 +1,8 @@
 <?php
 
-namespace Brain\Games\Helpers;
+namespace BrainGames\Helpers;
 
-use function Brain\Games\Cli\printLine;
+use function BrainGames\Cli\printLine;
 
 /**
  * Stops the program and displays an error

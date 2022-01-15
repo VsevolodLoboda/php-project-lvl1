@@ -4,4 +4,4 @@
 
 require 'autoload';
 
-Brain\Games\Prime\run();
+BrainGames\Prime\run();

@@ -4,4 +4,4 @@
 
 require 'autoload';
 
-Brain\Games\Progression\run();
+BrainGames\Progression\run();

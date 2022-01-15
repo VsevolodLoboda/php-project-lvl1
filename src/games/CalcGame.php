@@ -1,9 +1,9 @@
 <?php
 
-namespace Brain\Games\Calc;
+namespace BrainGames\Calc;
 
-use function Brain\Games\Engine\runBrainGame;
-use function Brain\Games\Helpers\criticalError;
+use function BrainGames\Engine\runBrainGame;
+use function BrainGames\Helpers\criticalError;
 
 const GAME_DESCRIPTION = 'What is the result of the expression?';
 

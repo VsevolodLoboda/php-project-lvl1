@@ -1,10 +1,10 @@
 <?php
 
-namespace Brain\Games\Prime;
+namespace BrainGames\Prime;
 
-use function Brain\Games\Engine\boolToHumanAnswer;
-use function Brain\Games\Engine\runBrainGame;
-use function Brain\Games\Engine\replaceAnswersPlaceholder;
+use function BrainGames\Engine\boolToHumanAnswer;
+use function BrainGames\Engine\runBrainGame;
+use function BrainGames\Engine\replaceAnswersPlaceholder;
 
 const GAME_DESCRIPTION = 'Answer "%s" if given number is prime. Otherwise answer "%s".';
 

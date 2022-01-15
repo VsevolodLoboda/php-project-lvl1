@@ -4,4 +4,4 @@
 
 require 'autoload';
 
-Brain\Games\Even\run();
+BrainGames\Even\run();
